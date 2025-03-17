@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Gestión de Stock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+        label {
+            width: 20%;
+            text-align: right;
+        }
+        select, input[type="number"], input[type="date"] {
+            width: 70%; /* Todos los campos tienen el mismo ancho */
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="date"] {
+            width: 30%; /* Casilla de fecha más pequeña */
+        }
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #e53935;
+        }
+        .low-stock {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulario de Gestión de Stock</h1>
+
+        <!-- Formulario para agregar datos -->
+        <form id="stockForm">
+            <div class="form-group">
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="professional">Nombre del Profesional:</label>
+                <select id="professional" name="professional" required>
+                    <option value="">Seleccione un profesional</option>
+                    <option value="Fatna">Fatna</option>
+                    <option value="Ana Cris">Ana Cris</option>
+                    <option value="Juan">Juan</option>
+                    <option value="Joaquin">Joaquin</option>
+                    <option value="Aina">Aina</option>
+                    <option value="Sor Consuelo">Sor Consuelo</option>
+                    <option value="Aminata">Aminata</option>
+                    <option value="Gema">Gema</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="device">Dispositivo:</label>
+                <select id="device" name="device" required>
+                    <option value="">Seleccione un dispositivo</option>
+                    <option value="Cejador">Cejador</option>
+                    <option value="San Blas 2ºA">San Blas 2ºA</option>
+                    <option value="San Blas 2ºB">San Blas 2ºB</option>
+                    <option value="San Juan de la Peña 11">San Juan de la Peña 11</option>
+                    <option value="San Juan de la Peña 13">San Juan de la Peña 13</option>
+                    <option value="Rodrigo Rebolledo">Rodrigo Rebolledo</option>
+                    <option value="Agustina 1ºA">Agustina 1ºA</option>
+                    <option value="Agustina 1ºB">Agustina 1ºB</option>
+                    <option value="Agustina 2ºA">Agustina 2ºA</option>
+                    <option value="Agustina 2ºB">Agustina 2ºB</option>
+                    <option value="Via Pignatelli">Via Pignatelli</option>
+                    <option value="Buenavista">Buenavista</option>
+                    <option value="Guimbao">Guimbao</option>
+                    <option value="Oficina refugio">Oficina refugio</option>
+                    <option value="Agustina General">Agustina General</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="product">Producto:</label>
+                <select id="product" name="product" required>
+                    <option value="">Seleccione un producto</option>
+                    <option value="Bayetas">Bayetas</option>
+                    <option value="Detergente">Detergente</option>
+                    <option value="Cubofregona">Cubofregona</option>
+                    <option value="Estropajo plateado">Estropajo plateado</option>
+                    <option value="Estropajo naranja">Estropajo naranja</option>
+                    <option value="Recogedor">Recogedor</option>
+                    <option value="Palos de recogedor">Palos de recogedor</option>
+                    <option value="Tablas de planchar">Tablas de planchar</option>
+                    <option value="Limpiacristales">Limpiacristales</option>
+                    <option value="Desengrasante">Desengrasante</option>
+                    <option value="Multiusos">Multiusos</option>
+                    <option value="Lavavajillas">Lavavajillas</option>
+                    <option value="Friegasuelos">Friegasuelos</option>
+                    <option value="Bolsas de basura">Bolsas de basura</option>
+                    <option value="Fregona">Fregona</option>
+                    <option value="Palo fregona">Palo fregona</option>
+                    <option value="Escoba">Escoba</option>
+                    <option value="Caja lejía">Caja lejía</option>
+                    <option value="Friegaplatos">Friegaplatos</option>
+                    <option value="Gel">Gel</option>
+                    <option value="Friegasuelos">Friegasuelos</option>
+                    <option value="Multilimpiador">Multilimpiador</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Cantidad:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+            </div>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+        <hr>
+
+        <!-- Tabla para mostrar los datos ingresados -->
+        <h2>Datos Ingresados</h2>
+        <table id="dataTable" border="1">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Profesional</th>
+                    <th>Dispositivo</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregan las filas con JavaScript -->
+            </tbody>
+        </table>
+
+        <hr>
+
+        <!-- Tabla de stock inicial editable -->
+        <h2>Stock Inicial y Actualizado</h2>
+        <table id="stockTable" border="1">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Stock Inicial</th>
+                    <th>Cantidad Vendida</th>
+                    <th>Stock Actualizado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregarán las filas con los productos y stock -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Datos iniciales de stock (esto puede ser personalizado o modificado más tarde)
+        const initialStock = {
+            'Bayetas': 100,
+            'Detergente': 50,
+            'Cubofregona': 60,
+            'Estropajo plateado': 80,
+            'Estropajo naranja': 90,
+            'Recogedor': 120,
+            'Palos de recogedor': 140,
+            'Tablas de planchar': 110,
+            'Limpiacristales': 130,
+            'Desengrasante': 75,
+            'Multiusos': 150,
+            'Lavavajillas': 95,
+            'Friegasuelos': 110,
+            'Bolsas de basura': 200,
+            'Fregona': 100,
+            'Palo fregona': 100,
+            'Escoba': 85,
+            'Caja lejía': 60,
+            'Friegaplatos': 70,
+            'Gel': 65,
+            'Friegasuelos': 50,
+            'Multilimpiador': 50
+        };
+
+        // Muestra el stock inicial y permite editarlo
+        const stockTableBody = document.getElementById('stockTable').getElementsByTagName('tbody')[0];
+
+        for (let product in initialStock) {
+            const newRow = stockTableBody.insertRow();
+            newRow.insertCell(0).textContent = product;
+            
+            // Hacer que el stock inicial sea editable
+            const stockCell = newRow.insertCell(1);
+            const stockInput = document.createElement('input');
+            stockInput.type = 'number';
+            stockInput.value = initialStock[product];
+            stockInput.min = 0;
+            stockCell.appendChild(stockInput);
+
+            newRow.insertCell(2).textContent = 0;  // Inicialmente la cantidad vendida es 0
+            const stockUpdatedCell = newRow.insertCell(3);
+            stockUpdatedCell.textContent = initialStock[product];  // Stock actualizado es igual al stock inicial
+
+            // Cambiar el color si el stock actualizado es menor a 5
+            if (initialStock[product] <= 5) {
+                stockUpdatedCell.classList.add('low-stock');
+            }
+        }
+
+        // Agregar datos de la tabla de datos ingresados
+        document.getElementById('stockForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar que la página se recargue
+
+            // Obtener los datos del formulario
+            const date = document.getElementById('date').value;
+            const professional = document.getElementById('professional').value;
+            const device = document.getElementById('device').value;
+            const product = document.getElementById('product').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+
+            // Crear una nueva fila en la tabla de datos ingresados
+            const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            // Insertar celdas con los datos
+            newRow.insertCell(0).textContent = date;
+            newRow.insertCell(1).textContent = professional;
+            newRow.insertCell(2).textContent = device;
+            newRow.insertCell(3).textContent = product;
+            newRow.insertCell(4).textContent = quantity;
+
+            // Botón de borrar
+            const deleteCell = newRow.insertCell(5);
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "Borrar";
+            deleteButton.classList.add('delete-btn');
+            deleteButton.onclick = function() {
+                if (confirm('¿Estás seguro de que quieres borrar esta línea?')) {
+                    table.deleteRow(newRow.rowIndex - 1);  // Borrar la fila seleccionada
+                }
+            };
+            deleteCell.appendChild(deleteButton);
+
+            // Actualizar la cantidad en la tabla de stock
+            const rows = stockTableBody.rows;
+            for (let i = 0; i < rows.length; i++) {
+                if (rows[i].cells[0].textContent === product) {
+                    let currentStock = parseInt(rows[i].cells[1].getElementsByTagName('input')[0].value);
+                    let quantitySold = parseInt(rows[i].cells[2].textContent) + quantity;
+                    rows[i].cells[2].textContent = quantitySold;
+                    let updatedStock = currentStock - quantitySold;
+                    rows[i].cells[3].textContent = updatedStock;
+
+                    // Cambiar el color si el stock actualizado es menor a 5
+                    if (updatedStock <= 5) {
+                        rows[i].cells[3].classList.add('low-stock');
+                    } else {
+                        rows[i].cells[3].classList.remove('low-stock');
+                    }
+                }
+            }
+
+            // Limpiar los campos después de enviar
+            document.getElementById('stockForm').reset();
+        });
+    </script>
+
+</body>
+</html>
